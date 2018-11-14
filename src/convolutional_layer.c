@@ -193,10 +193,10 @@ convolutional_layer make_convolutional_layer(int batch, int h, int w, int c, int
     l.batch_normalize = batch_normalize;
 
     l.weights = calloc(c/groups*n*size*size, sizeof(float));
-    l.weight_updates = calloc(c/groups*n*size*size, sizeof(float));
+    //l.weight_updates = calloc(c/groups*n*size*size, sizeof(float));
 
     l.biases = calloc(n, sizeof(float));
-    l.bias_updates = calloc(n, sizeof(float));
+    //l.bias_updates = calloc(n, sizeof(float));
 
     l.nweights = c/groups*n*size*size;
     l.nbiases = n;
@@ -216,7 +216,7 @@ convolutional_layer make_convolutional_layer(int batch, int h, int w, int c, int
     l.inputs = l.w * l.h * l.c;
 
     l.output = calloc(l.batch*l.outputs, sizeof(float));
-    l.delta  = calloc(l.batch*l.outputs, sizeof(float));
+    //l.delta  = calloc(l.batch*l.outputs, sizeof(float));
 
     l.forward = forward_convolutional_layer;
     l.backward = backward_convolutional_layer;
@@ -233,7 +233,7 @@ convolutional_layer make_convolutional_layer(int batch, int h, int w, int c, int
 
     if(batch_normalize){
         l.scales = calloc(n, sizeof(float));
-        l.scale_updates = calloc(n, sizeof(float));
+        //l.scale_updates = calloc(n, sizeof(float));
         for(i = 0; i < n; ++i){
             l.scales[i] = 1;
         }
@@ -241,8 +241,8 @@ convolutional_layer make_convolutional_layer(int batch, int h, int w, int c, int
         l.mean = calloc(n, sizeof(float));
         l.variance = calloc(n, sizeof(float));
 
-        l.mean_delta = calloc(n, sizeof(float));
-        l.variance_delta = calloc(n, sizeof(float));
+        //l.mean_delta = calloc(n, sizeof(float));
+        //l.variance_delta = calloc(n, sizeof(float));
 
         l.rolling_mean = calloc(n, sizeof(float));
         l.rolling_variance = calloc(n, sizeof(float));
