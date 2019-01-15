@@ -40,8 +40,9 @@ detection_layer make_detection_layer(int batch, int inputs, int n, int side, int
     l.output_gpu = cuda_make_array(l.output, batch*l.outputs);
     l.delta_gpu = cuda_make_array(l.delta, batch*l.outputs);
 #endif
-
+    #ifdef DEBUG
     fprintf(stderr, "Detection Layer\n");
+    #endif
     srand(0);
 
     return l;

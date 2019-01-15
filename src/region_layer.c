@@ -46,8 +46,9 @@ layer make_region_layer(int batch, int w, int h, int n, int classes, int coords)
     l.output_gpu = cuda_make_array(l.output, batch*l.outputs);
     l.delta_gpu = cuda_make_array(l.delta, batch*l.outputs);
 #endif
-
+    #ifdef DEBUG
     fprintf(stderr, "detection\n");
+    #endif
     srand(0);
 
     return l;
